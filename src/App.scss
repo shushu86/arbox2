@@ -1,0 +1,355 @@
+@mixin flexRow {
+    display: flex;
+}
+
+@mixin flexColumn {
+    display: flex;
+    flex-direction: column;
+}
+
+@mixin borderBottom {
+    border-bottom: solid rgb(233, 233, 233) 1pt;
+}
+
+body,html {
+    margin: 0px;
+    height: 100%;
+}
+
+.App {
+    background-image: url('../public/assets/Dashboard.png');
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+    z-index: -1;
+}
+
+.modal {
+    @include flexColumn();
+    margin-right: -410px;
+    box-shadow: 3px 0px 13px black;
+    overflow-x: hidden;
+    align-items: center;
+    padding: 10px 0px 20px 0px;
+    position: fixed;
+    z-index: 100;
+    width: 400px;
+    height: 100%;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    align-self: flex-end;
+    background-color: #ffffff;
+    transition: .7s;
+    >div {
+        @include flexRow();
+        width: 100%;
+        justify-content: space-evenly;
+    }
+    > div:not(:nth-child(1)) >div {
+        margin: 0px 30px 0px 30px;
+    }
+
+    > div:nth-child(1) {
+        justify-content: flex-start;
+        font-size: 10pt;
+        padding-left: 25px;
+        div {
+            padding: 0px 10px 0px 5px;
+            @include flexRow();
+            align-content: center;
+            align-items: center;
+        }
+        svg {
+            margin-right: 2px;
+            font-size: 13pt;
+        }
+    }
+
+    > div:nth-child(2) {
+        @include flexColumn();
+        @include borderBottom();
+    }
+
+    > div:nth-child(3) {
+        @include flexRow();
+        width: 80%;
+        justify-content: space-around;
+        padding: 25px 0px 25px 0px;
+        > div {
+            @include flexColumn();
+            justify-content: center;
+            align-items: center;
+            min-width: 60px;
+            padding-top: 10px;
+            :not(.statsHeader):not(.detailsHeader) {
+                font-size: 22pt;
+            }
+            .statsHeader {
+                margin-top: 5px;
+                font-weight: bold;
+                font-size: 10pt;
+            }
+            .detailsHeader {
+                font-size: 9pt;
+                margin-top: 3px;
+                color: gray;
+            }
+        }
+    }
+
+    > div:nth-child(4) {
+        @include flexColumn();
+        @include borderBottom();
+        border-top: solid rgb(233, 233, 233) 1pt;
+        padding: 40px 0px 40px 0px;
+        div {
+            font-size: 9pt;
+            color: gray;
+        }
+        .infoHeader {
+            font-weight: 300;
+            color: inherit;
+            font-size: 11pt;
+            margin-bottom: 10px;
+        }
+    }
+
+    > div:nth-child(5) {
+        justify-content: space-between;
+        align-items: center;
+        margin: 20px 0px 0px 0px;
+        >div:first-child {
+            padding-right: 23px;
+        }
+    }
+
+    .participantsList {
+        @include flexColumn();
+        width: 100%;
+        padding-bottom: 10px;
+        > div {
+            @include flexRow();
+            align-items: center;
+            justify-content: space-between;
+            .profilePic {
+                width: 40px;
+                height: auto;
+            }
+            >div:nth-child(1) {
+                @include flexRow();
+                align-items: center;
+                width: 140px;
+                font-size: 11pt;
+            }
+        }
+        .checkIn {
+            border-radius: 3px;
+            font-size: 11pt;
+            min-width: 80px;
+            max-width: 80px;
+            color: white;
+            padding: 8px;
+            text-align: center;
+            background-color: #54bb54;
+            margin: 10px;
+            border: solid #ffffff 1pt;
+            cursor: pointer;
+            &.active {
+                border: solid #54bb54 1pt;
+                background-color: #ffffff;
+                color: #54bb54;
+            }
+        }
+        .iconsContainer {
+            @include flexRow();
+            justify-content: end;
+            .waIcon {
+                font-size: 18pt;
+                color: #54bb54;
+            }
+            .trashIcon {
+                font-size: 18pt;
+                color: rgb(247, 91, 91);
+                cursor: pointer;
+            }
+        }
+        
+    }
+    
+    .workoutHeader {
+        @include flexColumn();
+        align-items: center;
+        font-weight: bold;
+        padding: 35px 0px 10px 0px;
+        div {
+            padding:15px;
+        }
+    }
+
+    .dumbellIcon {
+        @include flexRow();
+        font-size: 40pt;
+        background-color: #e18dff;
+        padding:15px;
+        border-radius: 100%;
+        color: white;
+        transform: rotate(320deg)
+    }
+
+    .redIcon {
+        color: red;
+        svg path {
+            stroke: red;
+        }
+    }
+
+    .customSelectContainer {
+        @include flexColumn();
+        width: 50%;
+        position: relative;
+    }
+
+    .customSelect {
+        @include flexRow();
+        padding: 10px;
+        background-color: #f5f5f5;
+        justify-content: space-between;
+        > div:nth-child(1) {
+            font-size: 11pt;
+        }
+        cursor: pointer;
+        &:after {
+            border:solid 1pt green;
+        }
+    }
+
+    .customSelectList {
+        display: none;
+        
+    }
+
+    .customSelectList.active {
+        @include flexColumn(); 
+        position: absolute;
+        width: 99%;
+        margin-left: 1px;
+        max-height: 125px;
+        overflow: scroll;
+        margin-top: 41px;
+        background-color: #ffffff;
+        box-shadow:  0px 0px 5px #d5d4d4;
+        > div {
+            @include flexRow();
+            align-items: center;
+            padding:5px;
+            font-size: 11pt;
+            &:hover {
+                background-color: rgba(184, 248, 184, 0.795);
+                cursor: pointer;
+            }
+        }
+    }
+
+    .profilePic {
+        border-radius: 100%;
+        width: 30px;
+        height: auto;
+        margin-right: 10px;
+    }
+
+    &.active {
+        transition: .7s;
+        margin-right: 0px;
+    }
+
+}
+
+
+.overlay {
+    position: fixed;
+    display: none;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+    background-color: rgba(0, 0, 0, 0.39);
+    &.active {
+        display: block;
+    }
+}
+
+@media only screen and (max-width: 420px) {
+    .modal > div:nth-child(3) {
+        flex-direction: column;
+    }
+
+    .modal .customSelectContainer {
+        text-align: center;
+        flex-wrap: nowrap !important;
+        .customSelect {
+            flex-wrap: nowrap !important;
+        }
+    }
+
+}
+
+@media only screen and (max-width: 520px) {
+   .modal > div:nth-child(3) {
+        flex-direction: column;
+        > div:not(:nth-child(1)) {
+            margin-top: 5px;
+        }
+    }
+    .modal .customSelectContainer {
+        width: 100%;
+        .customSelect {
+            margin-top: 5px;
+        }
+    }
+    .modal.active > div:nth-child(1) {
+        justify-content: center;
+        padding-left: 0px ;
+    }
+}
+
+@media only screen and (max-width: 668px) {
+    .modal {
+        width: 40%;
+        overflow-y: auto;
+        div:not(.customSelectList.active) {
+            flex-wrap: wrap;    
+            // justify-content: center;
+        }
+        > div:nth-child(3) {
+            margin: 0px;
+        }
+        > div:nth-child(5) {
+            margin: 15px 0px 15px 0px;
+            justify-content: center;
+        }
+        .workoutHeader {
+            margin: 20px 0px 0px 0px;
+            text-align: center;
+        }
+        .customSelectList.active {
+            > div {
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+        .customSelectContainer {
+            margin-top: 15px !important;
+        }
+    }
+    .modal > div:nth-child(5) > div:first-child {
+        padding-right: 0px;
+    }
+    .modal .participantsList > div {
+        border-top: solid lightgray 1pt !important;
+        padding-top: 5px;
+        justify-content: center;
+    }
+}
