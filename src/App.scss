@@ -120,7 +120,8 @@ body,html {
         align-items: center;
         margin: 20px 0px 0px 0px;
         >div:first-child {
-            padding-right: 23px;
+            padding-right: 15px;
+            padding-left: 8px;
         }
     }
 
@@ -346,6 +347,7 @@ body,html {
     }
     .modal > div:nth-child(5) > div:first-child {
         padding-right: 0px;
+        padding-left: 0px;
     }
     .modal .participantsList > div {
         border-top: solid lightgray 1pt !important;
