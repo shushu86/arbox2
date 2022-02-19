@@ -34,7 +34,7 @@ body, html {
   right: 0;
   top: 0;
   bottom: 0;
-  -ms-flex-item-align: end;
+  -ms-flex-item-align: flex-end;
       align-self: flex-end;
   background-color: #ffffff;
   -webkit-transition: .7s;
@@ -238,9 +238,9 @@ body, html {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: end;
+  -webkit-box-pack: flex-end;
+      -ms-flex-pack: flex-end;
+          justify-content: flex-end;
 }
 
 .modal .participantsList .iconsContainer .waIcon {
